@@ -22,54 +22,62 @@ def koszones():
    print("Szia! Örülök, hogy itt vagy!")
 
 
-def kor_ellenorzes(eletkor):
-   if eletkor < 18:
-      return "Még nem vagy nagykorú."
+def kor_ellenorzes():
+   eletkor = get_integer("Kérem az életkorodat")
+   if eletkor is None:
+      print("Nem adtál meg életkort!")
    else:
-      return "Nagykorú vagy."
+      if eletkor < 18:
+         print("Még nem vagy nagykorú.")
+      else:
+         print("Nagykorú vagy.")
 
 def belepes():
    jelszo = input("Kérem a jelszót: ")
    if jelszo == "python123":
-      return "Sikeres belépés."
+      return "Sikeres belépés!"
    else:
-      return "Hibás jelszó."
+      return "Hibás jelszó!"
 
-def paros_szam(szam):
-   if szam % 2 == 0:
-      return "A szám páros."
+def paros_vizsgalat():
+   paros_paratlan = get_integer("Kérek egy számot")
+   if paros_paratlan is None:
+      print("Nem adtál meg számot.")
    else:
-      return "A szám páratlan."
+      if paros_paratlan % 2 == 0:
+         print("A szám páros.")
+      else:
+         print("A szám páratlan.")
 
-def pozitiv_szam(szam):
+def vizsgal(szam):
    if szam > 0:
-      return "A szám pozitív."
+      return "Pozitív."
    elif szam == 0:
-      return "A szám nulla."
+      return "Nulla."
    else:
-      return "A szám negatív."
+      return "Negatív."
 
 def belepes_teljes():
    felhasznalo = input("Kérem a felhasználó nevét: ")
    jelszo = input("Kérem a jelszót: ")
-   if felhasznalo == "admin" and jelszo == "python123":
-      return f"Sikeres belépés, {felhasznalo}."
-   elif felhasznalo == "admin" and jelszo != "python123":
-      return "Hibás jelszó ."
+   if felhasznalo == "admin" and jelszo == "python":
+      return "Sikeres belépés!"
+   elif felhasznalo == "admin" and jelszo != "python":
+      return "Hibás jelszó!"
    elif felhasznalo != "admin":
-      return "Ismeretlen felhasználó."
+      return "Ismeretlen felhasználó!"
 
 def jegy(szazalek):
    if szazalek < 40:
-      return "Elégtelen"
+      return "elégtelen"
    elif szazalek < 55:
-      return "Elégséges"
+      return "elégséges"
    elif szazalek < 70:
-      return "Közepes"
+      return "közepes"
    elif szazalek < 85:
-      return "Jó"
+      return "jó"
    else:
-      return "Jeles"
+      return "jeles"
 
 
 
@@ -78,11 +86,11 @@ bemelegites = get_number("Kérek egy számot")
 if bemelegites is None:
    print("Nem adtál meg számot.")
 elif bemelegites < 0:
-   print("A megadott szám negatív.")
+   print("Negatív szám.")
 elif bemelegites == 0:
-   print("A megadott szám nulla.")
+   print("Nulla.")
 else:
-   print("A megadott szám: pozitív.")
+   print("Pozitív szám.")
 
 
 #2. Szám bekérése egész számként, megvizsgálva, hogy páros vagy páratlan
@@ -99,46 +107,38 @@ osztalyzat = get_integer("Kérek egy osztályzatot (1-5)")
 if osztalyzat is None:
    print("Nem adtál meg osztályzatot.")
 elif osztalyzat < 1 or osztalyzat > 5:
-   print("Hibás osztályzat.")
+   print("Hibás osztályzat!")
 else:
-   print(f"{osztalyzat}: { {1: 'Elégtelen', 2: 'Elégséges', 3: 'Közepes', 4: 'Jó', 5: 'Jeles' }[osztalyzat] }")
+   print(f"{osztalyzat}: { {1: 'elégtelen', 2: 'elégséges', 3: 'közepes', 4: 'jó', 5: 'jeles' }[osztalyzat] }")
 
 #4. Metódus nélküli köszönés
 koszones()
 
 #5. Életkor-ellenőrző metódus
-kor = get_integer("Kérem az életkorodat")
-if kor is None:
-   print("Nem adtál meg életkort.")
-else:
-   print(kor_ellenorzes(kor))
+kor_ellenorzes()
 
 #6. Jelszó ellenőrzés
 print(belepes())
 
 #7. Páros szám viszgálata metódussal
-paros_paratlan = get_integer("Kérek egy számot")
-if paros_paratlan is None:
-   print("Nem adtál meg számot.")
-else:
-   print(paros_szam(paros_paratlan))
+paros_vizsgalat()
 
 #8. Pozitív szám vizsgálata paraméterrel
 elojeles_szam = get_number("Kérek egy számot")
 if elojeles_szam is None:
    print("Nem adtál meg számot.")
 else:
-   print(pozitiv_szam(elojeles_szam))
+   print(vizsgal(elojeles_szam))
 
 #9. Beléptetési rendszer metódussal
 print(belepes_teljes())
 
 #10. Jegy meghatározása paraméterrel
-ertekeles = get_integer("Kérek egy %-os értékelést")
+ertekeles = get_number("Kérek egy %-os értékelést")
 if ertekeles is None:
    print("Nem adtál meg értékelést.")
 elif ertekeles < 0 or ertekeles > 100:
-   print("Hibás értékelés.")
+   print("Hibás százalék!")
 else:
    print(f"Az {ertekeles}% eredménye: {jegy(ertekeles)}")
 
