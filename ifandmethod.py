@@ -59,6 +59,19 @@ def belepes_teljes():
    elif felhasznalo != "admin":
       return "Ismeretlen felhasználó."
 
+def jegy(szazalek):
+   if szazalek < 40:
+      return "Elégtelen"
+   elif szazalek < 55:
+      return "Elégséges"
+   elif szazalek < 70:
+      return "Közepes"
+   elif szazalek < 85:
+      return "Jó"
+   else:
+      return "Jeles"
+
+
 
 #1. Bemelegítés a gyakorláshoz
 bemelegites = get_number("Kérek egy számot")
@@ -129,3 +142,46 @@ elif ertekeles < 0 or ertekeles > 100:
 else:
    print(f"Az {ertekeles}% eredménye: {jegy(ertekeles)}")
 
+#11/1. Beléptetés első változat
+eletkor = get_integer("Kérem az életkorodat")
+if eletkor is None:
+   print("Nem adtál meg életkort.")
+else:
+   kártya = get_integer("Van belépőkártyád? (1 = igen, más = nem)")
+   if kártya is None:
+      print("Nem adtál meg választ.")
+   elif eletkor >= 18:
+      if kártya == 1:
+         print("Beléphetsz.")
+      else:
+         print("Nincs belépőkártyád.")
+
+#11/2. Beléptetés második változat
+eletkor = get_integer("Kérem az életkorodat")
+if eletkor is None:
+   print("Nem adtál meg életkort.")
+else:
+   kártya = get_integer("Van belépőkártyád? (1 = igen, más = nem)")
+   if kártya is None:
+      print("Nem adtál meg választ.")
+   elif eletkor >= 18:
+      if kártya == 1:
+         print("Beléphetsz.")
+   else: 
+      print("Túl fiatal vagy a belépéshez.")
+
+#11/3. Beléptetés harmadik változat
+eletkor = get_integer("Kérem az életkorodat")
+if eletkor is None:
+   print("Nem adtál meg életkort.")
+else:
+   kártya = get_integer("Van belépőkártyád? (1 = igen, más = nem)")
+   if kártya is None:
+      print("Nem adtál meg választ.")
+   elif eletkor >= 18:
+      if kártya == 1:
+         print("Beléphetsz.")
+      else:
+         print("Nincs belépőkártyád.")
+   else:
+      print("Túl fiatal vagy.")
